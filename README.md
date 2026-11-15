@@ -11,11 +11,11 @@
 
 **sqldelta** compares two SQLite databases and tells you exactly what changed: tables, columns, indexes and individual rows. Think `git diff` for your database.
 
-## Why
+## 💡 Why
 
 "What did that migration actually do?" "Why does staging differ from production?" "What did the app write during this test?" Snapshot the file before and after, run sqldelta, and read the answer.
 
-## Usage
+## 🚀 Usage
 
 ```bash
 python sqldelta.py before.db after.db
@@ -41,7 +41,7 @@ DATA
       changed  id=3  (email: 'a@x.io' -> 'b@x.io')
 ```
 
-## What it compares
+## 📌 What it compares
 
 | Area | Detected |
 |------|----------|
@@ -50,11 +50,11 @@ DATA
 | Indexes | added, removed, definition changed |
 | Rows | added, removed, changed, matched by primary key (or `rowid` if none) |
 
-## Safe by design
+## 🧩 Safe by design
 
 Both files are opened **read-only**. Your databases are never modified.
 
-## Exit codes
+## 📌 Exit codes
 
 `0` identical, `1` differences found. Handy in tests and CI:
 
@@ -62,12 +62,12 @@ Both files are opened **read-only**. Your databases are never modified.
 python sqldelta.py expected.db actual.db --no-data || echo "schema drift!"
 ```
 
-## Notes
+## 📌 Notes
 
 - Rows are loaded into memory, so it is meant for small to medium databases.
 - Only columns present on both sides are compared for row changes; column additions and removals show up in the schema section.
 - Views and triggers are not compared yet.
 
-## License
+## 📄 License
 
 MIT
